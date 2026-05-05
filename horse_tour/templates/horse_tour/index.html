@@ -1,0 +1,22 @@
+<h1>Тур компании</h1>
+
+{% for company in companies %}
+    <h2>{{ company.name }}</h2>
+
+    <p>Средний рейтинг:
+        {% if company.avg_rating %}
+            {{ company.avg_rating }}
+        {% else %}
+            Нет оценок
+        {% endif %}
+    </p>
+
+    <p>Услуги:</p>
+    <ul>
+        {% for service in company.services.all %}
+            <li>{{ service.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+{% endfor %}

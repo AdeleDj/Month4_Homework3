@@ -1,0 +1,12 @@
+<h1>Заполнить форму записи на тур</h1>
+
+<form action="/bookings/create/" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Отправить</button>
+</form>
+
+<br>
+<a href="/bookings/">Назад</a>

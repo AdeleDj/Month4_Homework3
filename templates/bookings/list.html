@@ -1,0 +1,26 @@
+<h1>Записи на тур</h1>
+
+<a href="/bookings/create/">Добавить запись</a>
+
+<ul>
+    {% for i in bookings %}
+
+    <li>
+        <h2>Пользователь: {{ i.user }}</h2>
+        <p>Компания: {{ i.company }}</p>
+        <p>Дата: {{ i.date }}</p>
+        <p>Количество людей: {{ i.people_count }}</p>
+        <a href="/bookings/{{ i.id }}/">Подробнее</a>
+
+
+        <button>
+            <a href="/bookings/{{ i.id }}/delete/">Удалить</a>
+        </button>
+
+        <button>
+            <a href="/bookings/{{ i.id }}/update/">Изменить</a>
+        </button>
+    </li>
+
+    {% endfor %}
+</ul>

@@ -1,0 +1,10 @@
+<h1>Удалить запись</h1>
+
+<p>{{ booking }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Да</button>
+</form>
+
+<a href="/bookings/">Нет</a>

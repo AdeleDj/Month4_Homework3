@@ -1,26 +1,42 @@
+<form method="get">
+    <input type="text" name="q" placeholder="Поиск тура">
+    <button type="submit">Поиск</button>
+</form>
+
 <h1>Записи на тур</h1>
 
 <a href="/bookings/create/">Добавить запись</a>
 
 <ul>
-    {% for i in bookings %}
-
+    {% for booking in page_obj %}
     <li>
-        <h2>Пользователь: {{ i.user }}</h2>
-        <p>Компания: {{ i.company }}</p>
-        <p>Дата: {{ i.date }}</p>
-        <p>Количество людей: {{ i.people_count }}</p>
-        <a href="/bookings/{{ i.id }}/">Подробнее</a>
+        <h2>Пользователь: {{ booking.user.username }}</h2>
+        <p>Компания: {{ booking.company.name }}</p>
+        <p>Дата: {{ booking.date }}</p>
+        <p>Количество людей: {{ booking.people_count }}</p>
+        <a href="/bookings/{{ booking.id }}/">Подробнее</a>
 
 
         <button>
-            <a href="/bookings/{{ i.id }}/delete/">Удалить</a>
+            <a href="/bookings/{{ booking.id }}/delete/">Удалить</a>
         </button>
 
         <button>
-            <a href="/bookings/{{ i.id }}/update/">Изменить</a>
+            <a href="/bookings/{{ booking.id }}/update/">Изменить</a>
         </button>
     </li>
 
     {% endfor %}
 </ul>
+
+<div>
+    {% if page_obj.has_previous %}
+        <a href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Назад</a>
+    {% endif %}
+
+    <span>{{ page_obj.number }}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">Вперед</a>
+    {% endif %}
+</div>

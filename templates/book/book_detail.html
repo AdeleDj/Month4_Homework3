@@ -1,0 +1,9 @@
+<h1>{{ book.title }}</h1>
+{% if book.cover %}
+    <img src="{{ book.cover.url }}" alt="{{ book.title }}" width="200">
+{% endif %}
+<p>Автор: {{ book.author }}</p>
+<p>Описание: {{ book.description }}</p>
+<p>Дата: {{ book.publication_date }}</p>
+<p>Цена: {{ book.price }}</p>
+<p>Просмотры: {{ book.views }}</p>

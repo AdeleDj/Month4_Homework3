@@ -1,0 +1,28 @@
+<form method="get">
+    <input type="text" name="q" placeholder="Поиск книг">
+    <button type="submit">Поиск</button>
+</form>
+
+<h1>Список книг</h1>
+
+<ul>
+    {% for book in page_obj %}        
+        <li>
+            <a href="{% url 'book_detail' book.id %}">
+                {{ book.title }} — {{ book.author }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<div>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+    {% endif %}
+
+    <span>{{ page_obj.number }}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Вперед</a>
+    {% endif %}
+</div>

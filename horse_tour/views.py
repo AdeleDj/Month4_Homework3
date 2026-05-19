@@ -22,6 +22,8 @@ class ServiceListView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.request.GET.get('q')
         return context
+    
+    
 
     # def service_list(request):
     #     query = request.GET.get('q')
